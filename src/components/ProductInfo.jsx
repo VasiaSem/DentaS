@@ -1,17 +1,34 @@
-import {Image, Tag} from 'antd'
-import React from 'react';
+import { LeftCircleOutlined, LeftOutlined } from '@ant-design/icons';
+import {Button, Image, Tag} from 'antd'
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { data } from './Vmist';
 
 export default function ProductInfo() {
-    const item = {
-        key: 6,
-        title: "Карієс",
-        time: '45 хв',
-        discount: 100,
-        price: 600
-    }
+
+    const { key } = useParams();
+    const navigate = useNavigate();
+    const [item, setItem] = useState(null);
+
+    useEffect(() => {
+            setItem(data.find(i => i.key == key));
+        
+    }, []);
+
+    // const item = {
+    //     key: 6,
+    //     title: "Карієс",
+    //     time: '45 хв',
+    //     discount: 100,
+    //     price: 600
+    // }
 
     return (
-        <div>
+        <>
+        <Button onClick={() => navigate(-1)} color="default" variant="text" icon={<LeftCircleOutlined/>}></Button>
+
+       {item ?
+        (<div>
               <h2>{item.title}</h2>
                     <p>{item.categoryName}</p>
                     <hr />
@@ -27,7 +44,10 @@ export default function ProductInfo() {
                         <Tag color="volcano">Out of Stock</Tag>}</p>
 
                     <p>{item.description}</p>
-        </div>
+        </div>)
+        :
+        (<p>Loading...</p>)}
+        </>
     );
 }
 
