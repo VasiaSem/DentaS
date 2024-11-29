@@ -5,6 +5,7 @@ import {
   HomeFilled,
   InfoCircleFilled,
   PieChartOutlined,
+  PlusCircleFilled,
   ProductFilled,
   TeamOutlined,
   UserOutlined,
@@ -66,9 +67,15 @@ const AppLayout = () => {
           },
           {
             key: '3',
+            icon: <PlusCircleFilled/>,
+            label: <Link to="/create">Create Product</Link>
+          },
+          {
+            key: '4',
             icon: <InfoCircleFilled/>,
             label: <Link to="/about">About</Link>
           },
+        
       ]}
       />
       </Sider>
@@ -85,14 +92,22 @@ const AppLayout = () => {
             margin: '0 16px',
           }}
         >
+            <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
           <Breadcrumb
             style={{
-              margin: '16px 0',
+              margin: 'px 0',
             }}
           >
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
+          
+            <Breadcrumb.Item>СТУДІЯ СТОМАТОЛОГІЇ</Breadcrumb.Item>
+       
           </Breadcrumb>
+          </div>
           <div
             style={{
               padding: 24,
